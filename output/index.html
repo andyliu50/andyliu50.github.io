@@ -12,6 +12,7 @@
                 <h1><a href="/">Andy's Blog</a></h1>
                 <nav><ul>
                     <li><a href="/index.html">首页</a></li>
+                    <li><a href="/category/ji-zhu.html">技术</a></li>
                     <li><a href="/category/pao-bu.html">跑步</a></li>
                     <li><a href="/category/sui-xiang.html">随想</a></li>
                     <li><a href="/category/yue-du.html">阅读</a></li>
@@ -20,7 +21,90 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/2020nian-yun-dong-he-jian-kang-shu-ju.html">2020年运动和健康数据</a></h1>
+                    <h1 class="entry-title"><a href="/ji-zhu-xiao-tie-shi.html">技术小贴士</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2021-01-05T18:19:00+08:00">
+                Published: 周二 05 一月 2021
+        </abbr>
+		<br />
+        <abbr class="modified" title="2021-01-05T18:19:00+08:00">
+                Updated: 周二 05 一月 2021
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andy.html">Andy</a>
+        </address>
+<p>In <a href="/category/ji-zhu.html">技术</a>.</p>
+
+</footer><!-- /.post-info --><h2><strong>Transmission支持将种子文件放到指定目录下后，就会自动创建下载任务。</strong></h2>
+<p>配置文件/etc/transmission-daemon/settings.json的配置参数</p>
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;watch-dir&quot;</span><span class="err">:</span> <span class="s2">&quot;/home/pi/Downloads/torrents&quot;</span><span class="err">,</span>
+<span class="s2">&quot;watch-dir-enabled&quot;</span><span class="err">:</span> <span class="kc">true</span>
+</code></pre></div>
+
+
+<p>配置参数<em>watch-dir</em>，指定存放种子文件的目录。为了避免权限不足，建议为目录设置775权限。</p>
+<div class="highlight"><pre><span></span><code>chmod <span class="m">775</span> torrents
+</code></pre></div>
+
+
+<p>为了使配置生效，需要重新启动Transmission-daemon服务。</p>
+<div class="highlight"><pre><span></span><code>sudo service transmission-daemon restart
+</code></pre></div>
+
+
+<hr>
+<h2><strong>树莓派如何启用VNC服务</strong></h2>
+<p>输入命令<strong>sudo raspi-config</strong>，选择<strong>Interface Options</strong>  - <strong>P3 VNC</strong>。</p>
+<p>默认情况下，树莓派的分辨率为<strong>720x480</strong>，因此，VNC连上后，无法正常显示桌面。</p>
+<p>输入命令<strong>sudo raspi-config</strong>，选择<strong>Advanced Options</strong> - <strong>Resolution</strong>，将分辨率调整为<strong>1920x1080</strong>。</p>
+<hr>
+<h2><strong>树莓派没有显示器如何配置随机启动SSH服务 </strong></h2>
+<p>将SD卡插到电脑上，打开boot分区，用记事本创建一个新文件，文件名为ssh，<strong>注意需要将后缀.txt删除</strong>。然后将SD卡插入树莓派，通电启动后，SSH服务会随机启动。</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/pao-bu-ri-zhi.html" rel="bookmark"
+                           title="Permalink to 跑步日志">跑步日志</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2021-01-05T17:39:00+08:00">
+                Published: 周二 05 一月 2021
+        </abbr>
+		<br />
+        <abbr class="modified" title="2021-01-05T17:39:00+08:00">
+                Updated: 周二 05 一月 2021
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andy.html">Andy</a>
+        </address>
+<p>In <a href="/category/pao-bu.html">跑步</a>.</p>
+
+</footer><!-- /.post-info -->                <p><strong>跑步日志是简单记录跑步时的感受和想法。</strong></p>
+<p><strong>1月5日 星期二 小寒 阴天</strong></p>
+<p>因有事请假，早上有时间就出门小跑一会儿。跑一小段路，就慢走一会儿，走走跑跑，跑完后，感觉不是很累。以前跑步总是追求速度，跑完后接下来几天身体明显会感觉到疲劳。以后跑步还是应该以身体舒适为主要目的。</p>
+<hr>
+<p><strong>1月1日 星期五 晴 </strong></p>
+<p>2021年的第一天，虽然天气寒冷，但是阳光明媚。清晨起床后，特别想出去跑步。路上行人稀少，呼吸着新鲜的空气，精神特别振奋。</p>
+                <a class="readmore" href="/pao-bu-ri-zhi.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2020nian-yun-dong-he-jian-kang-shu-ju.html" rel="bookmark"
+                           title="Permalink to 2020年运动和健康数据">2020年运动和健康数据</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2021-01-02T18:17:00+08:00">
                 Published: 周六 02 一月 2021
@@ -31,7 +115,7 @@
         </address>
 <p>In <a href="/category/pao-bu.html">跑步</a>.</p>
 
-</footer><!-- /.post-info --><ul>
+</footer><!-- /.post-info -->                <ul>
 <li>2020年全年的跑量为<strong>387公里</strong>，跑步天数为<strong>82天</strong>。与2019年相比，<strong>跑量减少了一半以上</strong>。</li>
 <li>平均压力指数为<strong>31</strong>，比2019年高。</li>
 <li>平均静息心率为<strong>57次/分</strong>。</li>
@@ -41,12 +125,10 @@
 <img alt="" src="/images/2020年运动和健康数据/2.png">
 <img alt="" src="/images/2020年运动和健康数据/3.png">
 <img alt="" src="/images/2020年运动和健康数据/4.png">
-<img alt="" src="/images/2020年运动和健康数据/5.png"></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<img alt="" src="/images/2020年运动和健康数据/5.png"></p>
+                <a class="readmore" href="/2020nian-yun-dong-he-jian-kang-shu-ju.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -97,75 +179,12 @@
                 <a class="readmore" href="/wo-de-bo-ke-20.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2019nian-yun-dong-he-jian-kang-shu-ju.html" rel="bookmark"
-                           title="Permalink to 2019年运动和健康数据">2019年运动和健康数据</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2020-01-04T20:55:00+08:00">
-                Published: 周六 04 一月 2020
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andy.html">Andy</a>
-        </address>
-<p>In <a href="/category/pao-bu.html">跑步</a>.</p>
-
-</footer><!-- /.post-info -->                <ul>
-<li>2019年跑步的月份中，压力指数明显下降(<strong>平均压力22</strong>)。说明跑步<strong>有助于增加抗压能力</strong>。</li>
-<li>全年跑步的天数是<strong>162天</strong>，总距离是<strong>875公里</strong>，跑步的月份主要是<strong>7-12</strong>月份。</li>
-<li>全年平均每天的睡眠时间大约是<strong>7小时</strong>。</li>
-</ul>
-<p><img alt="" src="/images/2019年运动和健康数据/1.jpeg">
-<img alt="" src="/images/2019年运动和健康数据/2.jpeg">
-<img alt="" src="/images/2019年运动和健康数据/3.jpeg">
-<img alt="" src="/images/2019年运动和健康数据/4.jpeg">
-<img alt="" src="/images/2019年运动和健康数据/5.jpeg"></p>
-                <a class="readmore" href="/2019nian-yun-dong-he-jian-kang-shu-ju.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/san-ge-jue-miao-de-da-an.html" rel="bookmark"
-                           title="Permalink to 三个绝妙的答案">三个绝妙的答案</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2019-02-19T16:10:00+08:00">
-                Published: 周二 19 二月 2019
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andy.html">Andy</a>
-        </address>
-<p>In <a href="/category/yue-du.html">阅读</a>.</p>
-
-</footer><!-- /.post-info -->                <h3><strong>以下这篇故事摘录自一行禅师的著作《正念的奇迹》</strong></h3>
-<hr>
-<p>一天，有个皇帝想到，只要他知道三个问题的答案，行事就不会再有差错了。</p>
-<p><strong>做每件事的最佳时机是什么时候？</strong></p>
-<p><strong>与你共事最重要的人是谁？</strong></p>
-<p><strong>无论何时，要做的最重要的事是什么？</strong></p>
-<p>皇帝下令全国上下遍贴告示：如果有人能回答以上问题，将获重赏。不少人看到告示便赶往皇宫。每个人的答案都各不相同。</p>
-<p>有人对第一个问题的建议是，皇帝制定一个详尽的时间表，将每年、每月、每天、每个小时该做的事情都规划好，然后依表行事。只有这样，皇帝才能在对的时间做对的事。</p>
-<p>另有人认为，不能事先计划好所有的事，皇帝应该把无谓的玩乐放在一边，保持对每一件事的关注，这样才能知道什么时候该做什么事。</p>
-<p>还有人坚持说，皇帝只靠自己，不可能有足够必要的先见和能力决定什么时候做什么事。皇帝真正需要做的是设立一个智囊团，依照智囊团的忠告行事。</p>
-<p>有人则说，有些事必须立即决定，没有时间等大家商量，但是如果想预告知道会发生什么事，应该询问术士和预言师。</p>
-<p>众人对第二个问题的答案没有共识。</p>
-<p>有人说皇帝应该完全信任臣子，有人认为应该信赖神父和法，还有人向皇帝推荐医生，也有人对武士充满信心。</p>
-<p>第三个问题的答案也是众说纷纭。</p>
-<p>有些人说科学是最重要的事业，其他人则坚持说是宗教，还有人主张最重要的是军事技术。</p>
-<p>皇帝对所有答案都不满意，一分赏赐都没有给 …</p>
-                <a class="readmore" href="/san-ge-jue-miao-de-da-an.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 2
+        <a href="/index2.html">&raquo;</a>
+        <a href="/index2.html">&#8649;</a>
+</p>
                 </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="blogroll">

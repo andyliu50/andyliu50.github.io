@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>技术小贴士</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <meta name="description" content="Transmission支持将种子文件放到指定目录下后，就会自动创建下载任务。 配置文件/etc/transmission-daemon/settings.json的配置参数 "watch-dir": "/home/pi/Downloads/torrents",..." />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Andy's Blog</a></h1>
+                <nav><ul>
+                    <li><a href="/index.html">首页</a></li>
+                    <li class="active"><a href="/category/ji-zhu.html">技术</a></li>
+                    <li><a href="/category/pao-bu.html">跑步</a></li>
+                    <li><a href="/category/sui-xiang.html">随想</a></li>
+                    <li><a href="/category/yue-du.html">阅读</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/ji-zhu-xiao-tie-shi.html" rel="bookmark"
+           title="Permalink to 技术小贴士">技术小贴士</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2021-01-05T18:19:00+08:00">
+                Published: 周二 05 一月 2021
+        </abbr>
+		<br />
+        <abbr class="modified" title="2021-01-05T18:19:00+08:00">
+                Updated: 周二 05 一月 2021
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andy.html">Andy</a>
+        </address>
+<p>In <a href="/category/ji-zhu.html">技术</a>.</p>
+
+</footer><!-- /.post-info -->      <h2><strong>Transmission支持将种子文件放到指定目录下后，就会自动创建下载任务。</strong></h2>
+<p>配置文件/etc/transmission-daemon/settings.json的配置参数</p>
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;watch-dir&quot;</span><span class="err">:</span> <span class="s2">&quot;/home/pi/Downloads/torrents&quot;</span><span class="err">,</span>
+<span class="s2">&quot;watch-dir-enabled&quot;</span><span class="err">:</span> <span class="kc">true</span>
+</code></pre></div>
+
+
+<p>配置参数<em>watch-dir</em>，指定存放种子文件的目录。为了避免权限不足，建议为目录设置775权限。</p>
+<div class="highlight"><pre><span></span><code>chmod <span class="m">775</span> torrents
+</code></pre></div>
+
+
+<p>为了使配置生效，需要重新启动Transmission-daemon服务。</p>
+<div class="highlight"><pre><span></span><code>sudo service transmission-daemon restart
+</code></pre></div>
+
+
+<hr>
+<h2><strong>树莓派如何启用VNC服务</strong></h2>
+<p>输入命令<strong>sudo raspi-config</strong>，选择<strong>Interface Options</strong>  - <strong>P3 VNC</strong>。</p>
+<p>默认情况下，树莓派的分辨率为<strong>720x480</strong>，因此，VNC连上后，无法正常显示桌面。</p>
+<p>输入命令<strong>sudo raspi-config</strong>，选择<strong>Advanced Options</strong> - <strong>Resolution</strong>，将分辨率调整为<strong>1920x1080</strong>。</p>
+<hr>
+<h2><strong>树莓派没有显示器如何配置随机启动SSH服务 </strong></h2>
+<p>将SD卡插到电脑上，打开boot分区，用记事本创建一个新文件，文件名为ssh，<strong>注意需要将后缀.txt删除</strong>。然后将SD卡插入树莓派，通电启动后，SSH服务会随机启动。</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
