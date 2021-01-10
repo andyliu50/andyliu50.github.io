@@ -21,14 +21,67 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/ji-zhu-xiao-tie-shi.html">技术小贴士</a></h1>
+                    <h1 class="entry-title"><a href="/ming-yan-jing-ju.html">名言警句</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2021-01-10T10:36:00+08:00">
+                Published: 周日 10 一月 2021
+        </abbr>
+		<br />
+        <abbr class="modified" title="2021-01-10T10:36:00+08:00">
+                Updated: 周日 10 一月 2021
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andy.html">Andy</a>
+        </address>
+<p>In <a href="/category/yue-du.html">阅读</a>.</p>
+
+</footer><!-- /.post-info --><ul>
+<li>
+<p>风吹枯叶落，落叶生肥土，肥土丰香果，孜孜不倦，不紧不慢，人生果实。  </p>
+<blockquote>
+<p>——  电影《人生果实》  </p>
+</blockquote>
+</li>
+<li>
+<p>只有用心灵看，才能看得清楚；本质的东西，眼睛是看不见的。  </p>
+<blockquote>
+<p>——《小王子》  </p>
+</blockquote>
+</li>
+<li>
+<p>相比于追名逐利、不得安宁的日子，平静而朴素的生活带来的快乐更多。  </p>
+<blockquote>
+<p>—— 爱因斯坦  </p>
+</blockquote>
+</li>
+<li>
+<p>如果没有文化，我也不想活了。很多人可以买到香奈儿，但买不到气质；可以买到很好的床，但买不到安稳的睡眠；可以买到豪华别墅，但买不到温馨的家庭；可以买到很好的食物，但不一定买到很好的食欲。”  </p>
+<blockquote>
+<p>—— 吴清友（诚品书店创始人  ）</p>
+</blockquote>
+</li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/ji-zhu-xiao-tie-shi.html" rel="bookmark"
+                           title="Permalink to 技术小贴士">技术小贴士</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2021-01-05T18:19:00+08:00">
                 Published: 周二 05 一月 2021
         </abbr>
 		<br />
-        <abbr class="modified" title="2021-01-05T18:19:00+08:00">
-                Updated: 周二 05 一月 2021
+        <abbr class="modified" title="2021-01-10T09:31:00+08:00">
+                Updated: 周日 10 一月 2021
         </abbr>
 
         <address class="vcard author">
@@ -36,36 +89,24 @@
         </address>
 <p>In <a href="/category/ji-zhu.html">技术</a>.</p>
 
-</footer><!-- /.post-info --><h2><strong>Transmission支持将种子文件放到指定目录下后，就会自动创建下载任务。</strong></h2>
-<p>配置文件/etc/transmission-daemon/settings.json的配置参数</p>
-<div class="highlight"><pre><span></span><code><span class="s2">&quot;watch-dir&quot;</span><span class="err">:</span> <span class="s2">&quot;/home/pi/Downloads/torrents&quot;</span><span class="err">,</span>
-<span class="s2">&quot;watch-dir-enabled&quot;</span><span class="err">:</span> <span class="kc">true</span>
+</footer><!-- /.post-info -->                <h1><strong>如何让SSH Tunnel保持长连接</strong></h1>
+<p>autossh可以用来监控SSH连接，并且当SSH连接中断后，自动重连。</p>
+<div class="highlight"><pre><span></span><code>autossh -f -M <span class="m">0</span> -NR <span class="m">0</span>.0.0.0:50022:localhost:22 root@remoteserver -p <span class="m">12345</span>
 </code></pre></div>
 
 
-<p>配置参数<em>watch-dir</em>，指定存放种子文件的目录。为了避免权限不足，建议为目录设置775权限。</p>
-<div class="highlight"><pre><span></span><code>chmod <span class="m">775</span> torrents
+<p>-f  autossh运行在后台。即使不用-f参数，autossh也会运行在后台，但是，如果用帐号登录，会提示输入密码。  </p>
+<p>-M  如果设置为0，就会关闭autossh监控SSH隧道通断的状态。并且，autossh文档也建议使用OpenSSH自身的KeepAlive监控功能。即在sshd_config中设置以下参数：</p>
+<div class="highlight"><pre><span></span><code><span class="err">ClientAliveInterval 30 </span>
+<span class="err">ClientAliveCountMax 3</span>
 </code></pre></div>
 
 
-<p>为了使配置生效，需要重新启动Transmission-daemon服务。</p>
-<div class="highlight"><pre><span></span><code>sudo service transmission-daemon restart
-</code></pre></div>
-
-
-<hr>
-<h2><strong>树莓派如何启用VNC服务</strong></h2>
-<p>输入命令<strong>sudo raspi-config</strong>，选择<strong>Interface Options</strong>  - <strong>P3 VNC</strong>。</p>
-<p>默认情况下，树莓派的分辨率为<strong>720x480</strong>，因此，VNC连上后，无法正常显示桌面。</p>
-<p>输入命令<strong>sudo raspi-config</strong>，选择<strong>Advanced Options</strong> - <strong>Resolution</strong>，将分辨率调整为<strong>1920x1080</strong>。</p>
-<hr>
-<h2><strong>树莓派没有显示器如何配置随机启动SSH服务 </strong></h2>
-<p>将SD卡插到电脑上，打开boot分区，用记事本创建一个新文件，文件名为ssh，<strong>注意需要将后缀.txt删除</strong>。然后将SD卡插入树莓派，通电启动后，SSH服务会随机启动。</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p>另外，如何才能让系统自动重启后，让autossh自动连接。修改配置文件：/etc/rc.local ，在exit 0上方添加以下内容：</p>
+<p><strong>autossh -f -M …</strong></p>
+                <a class="readmore" href="/ji-zhu-xiao-tie-shi.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -79,8 +120,8 @@
                 Published: 周二 05 一月 2021
         </abbr>
 		<br />
-        <abbr class="modified" title="2021-01-05T17:39:00+08:00">
-                Updated: 周二 05 一月 2021
+        <abbr class="modified" title="2021-01-19T18:59:00+08:00">
+                Updated: 周二 19 一月 2021
         </abbr>
 
         <address class="vcard author">
@@ -89,9 +130,13 @@
 <p>In <a href="/category/pao-bu.html">跑步</a>.</p>
 
 </footer><!-- /.post-info -->                <p><strong>跑步日志是简单记录跑步时的感受和想法。</strong></p>
+<p><strong>1月9日 星期六 晴</strong></p>
+<p>脖子和右腰有点酸痛，身体状态一般。等到天气变暖，尽量一周跑3次。</p>
+<p>有益的事情，做了以后，体会到其益处，并因此而发自内心的感到喜悦，益发愿意去做。这应该就是孔子所说的学而时习之，不亦说乎吧。</p>
+<h2>-----------------------------------------------------------------------------------------------------------------</h2>
 <p><strong>1月5日 星期二 小寒 阴天</strong></p>
 <p>因有事请假，早上有时间就出门小跑一会儿。跑一小段路，就慢走一会儿，走走跑跑，跑完后，感觉不是很累。以前跑步总是追求速度，跑完后接下来几天身体明显会感觉到疲劳。以后跑步还是应该以身体舒适为主要目的。</p>
-<hr>
+<h2>-----------------------------------------------------------------------------------------------------------------</h2>
 <p><strong>1月1日 星期五 晴 </strong></p>
 <p>2021年的第一天，虽然天气寒冷，但是阳光明媚。清晨起床后，特别想出去跑步。路上行人稀少，呼吸着新鲜的空气，精神特别振奋。</p>
                 <a class="readmore" href="/pao-bu-ri-zhi.html">read more</a>
@@ -152,31 +197,6 @@
 <p>在如何锻炼这件事上，我只想选择一种既经济又方便的方式。我既不想去健身房，也不愿意学习太过于复杂的运动方式。而对于跑步来说，只需要一双球鞋，随时都可以出门奔跑。因此，跑步自然就成了我的不二选择。</p>
 <p>刚开始跑步时，我记得只跑了一公里不到，就累得气喘吁吁，满头大汗。但是，不知出于何种原因 …</p>
                 <a class="readmore" href="/dang-tan-lun-pao-bu-shi-wo-zai-tan-lun-chi-zhi-yi-heng.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/wo-de-bo-ke-20.html" rel="bookmark"
-                           title="Permalink to 我的博客2.0">我的博客2.0</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2020-12-26T17:26:00+08:00">
-                Published: 周六 26 十二月 2020
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andy.html">Andy</a>
-        </address>
-<p>In <a href="/category/sui-xiang.html">随想</a>.</p>
-
-</footer><!-- /.post-info -->                <p>再过几天，2020年就要与我们挥手告别，新的一年又将来临。在这辞旧迎新之际，我打算把博客迁移到<a href="https://blog.getpelican.com/">Pelican</a>，希望明年开始能认认真真记录下自己的学习和生活。</p>
-<p>回顾自己写博客的经历，应该是从2018年开始，到目前为止，写了大约有70多篇。大部分博客的内容都是与技术相关，更准确的说，应该是关于技术的学习笔记，方便自己遗忘的时候，可以随时查询。平时，写博客的过程也是十分散漫，形式和内容都比较随意，缺乏思考的过程。因此，以前的博客就像是一本笔记本，只是用于随手整理自己所学的知识。</p>
-<p>一次，在访问博客<a href="https://pbpython.com/">Practical Business Python</a>的时候，无意中发现博主的博客是由<a href="https://blog.getpelican.com/">Pelican</a>生成的，并且进一步发现，<a href="https://blog.getpelican.com/">Pelican</a>是完全用Python编写。由此，我萌生了改用<a href="https://blog.getpelican.com/">Pelican</a>来制作自己博客的想法。一方面的缘故，我对Python十分感兴趣，正在学习这门语言。另一方面，我特别喜欢<a href="https://blog.getpelican.com/">Pelican</a>提供的主题。</p>
-<p>在迁移博客的过程中，我也开始思考博客应该写什么。难道只是用来机械的整理所学的知识吗，亦或者是记录一些生活中的见闻 …</p>
-                <a class="readmore" href="/wo-de-bo-ke-20.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
