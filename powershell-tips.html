@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>PowerShell Tips</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <meta name="description" content="批处理文件中%~dpn0 当把批处理文件和其它文件(PowerShell脚本)部署到计算机上后，如果无法知道文件所在的目录，就可以使用%~dpn0。 在批处理文件中，%n是一种特殊变量： %0: 批处理文件的完整路径（包括批处理文件的文件名和后缀） %1: 批处理问后面的第一个参数 %2:..." />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Andy's Blog</a></h1>
+                <nav><ul>
+                    <li><a href="/index.html">首页</a></li>
+                    <li class="active"><a href="/category/ji-zhu.html">技术</a></li>
+                    <li><a href="/category/pao-bu.html">跑步</a></li>
+                    <li><a href="/category/sui-xiang.html">随想</a></li>
+                    <li><a href="/category/yue-du.html">阅读</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/powershell-tips.html" rel="bookmark"
+           title="Permalink to PowerShell Tips">PowerShell Tips</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2021-04-15T12:06:16+08:00">
+                Published: 周四 15 四月 2021
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andy.html">Andy</a>
+        </address>
+<p>In <a href="/category/ji-zhu.html">技术</a>.</p>
+
+</footer><!-- /.post-info -->      <h1><strong>批处理文件中%~dpn0</strong></h1>
+<p>当把批处理文件和其它文件(PowerShell脚本)部署到计算机上后，如果无法知道文件所在的目录，就可以使用%~dpn0。</p>
+<p>在批处理文件中，<strong>%n</strong>是一种特殊变量：</p>
+<p><strong>%0</strong>: 批处理文件的完整路径（包括批处理文件的文件名和后缀）<br>
+<strong>%1</strong>: 批处理问后面的第一个参数<br>
+<strong>%2</strong>: 批处理问后面的第二个参数 
+… </p>
+<p>另外，以下参数可以和%0结合使用，用于表达文件路径：</p>
+<p><strong>~d</strong>: 驱动器盘符，例如C:\, D:\<br>
+<strong>~p</strong>: 路径（不包含驱动器盘符和批处理文件名）<br>
+<strong>~n</strong>: 批处理文件名</p>
+<p>所以，如果结合起来使用就是：</p>
+<p><strong>%0</strong>: 批处理文件的完整路径（<strong>包含批处理文件的后缀</strong>）<br>
+<strong>%dp0</strong>:  批处理文件所在的目录<br>
+<strong>%dpn0</strong>: 批处理文件的完整路径（<strong>不包含批处理文件的后缀</strong>）</p>
+<hr>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -21,7 +21,46 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/ji-zhu-xiao-tie-shi.html">技术小贴士</a></h1>
+                    <h1 class="entry-title"><a href="/powershell-tips.html">PowerShell Tips</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2021-04-15T12:06:16+08:00">
+                Published: 周四 15 四月 2021
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andy.html">Andy</a>
+        </address>
+<p>In <a href="/category/ji-zhu.html">技术</a>.</p>
+
+</footer><!-- /.post-info --><h1><strong>批处理文件中%~dpn0</strong></h1>
+<p>当把批处理文件和其它文件(PowerShell脚本)部署到计算机上后，如果无法知道文件所在的目录，就可以使用%~dpn0。</p>
+<p>在批处理文件中，<strong>%n</strong>是一种特殊变量：</p>
+<p><strong>%0</strong>: 批处理文件的完整路径（包括批处理文件的文件名和后缀）<br>
+<strong>%1</strong>: 批处理问后面的第一个参数<br>
+<strong>%2</strong>: 批处理问后面的第二个参数 
+… </p>
+<p>另外，以下参数可以和%0结合使用，用于表达文件路径：</p>
+<p><strong>~d</strong>: 驱动器盘符，例如C:\, D:\<br>
+<strong>~p</strong>: 路径（不包含驱动器盘符和批处理文件名）<br>
+<strong>~n</strong>: 批处理文件名</p>
+<p>所以，如果结合起来使用就是：</p>
+<p><strong>%0</strong>: 批处理文件的完整路径（<strong>包含批处理文件的后缀</strong>）<br>
+<strong>%dp0</strong>:  批处理文件所在的目录<br>
+<strong>%dpn0</strong>: 批处理文件的完整路径（<strong>不包含批处理文件的后缀</strong>）</p>
+<hr>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/ji-zhu-xiao-tie-shi.html" rel="bookmark"
+                           title="Permalink to 技术小贴士">技术小贴士</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2021-01-05T18:19:00+08:00">
                 Published: 周二 05 一月 2021
@@ -36,7 +75,7 @@
         </address>
 <p>In <a href="/category/ji-zhu.html">技术</a>.</p>
 
-</footer><!-- /.post-info --><h1><strong>如何让SSH Tunnel保持长连接</strong></h1>
+</footer><!-- /.post-info -->                <h1><strong>如何让SSH Tunnel保持长连接</strong></h1>
 <p>autossh可以用来监控SSH连接，并且当SSH连接中断后，自动重连。</p>
 <div class="highlight"><pre><span></span><code>autossh -f -M <span class="m">0</span> -NR <span class="m">0</span>.0.0.0:50022:localhost:22 root@remoteserver -p <span class="m">12345</span>
 </code></pre></div>
@@ -50,150 +89,10 @@
 
 
 <p>另外，如何才能让系统自动重启后，让autossh自动连接。修改配置文件：/etc/rc.local ，在exit 0上方添加以下内容：</p>
-<p><strong>autossh -f -M 0 -NR 0.0.0.0:50022:localhost:22 root@remoteserver -p 12345</strong></p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/sh -e</span>
-<span class="c1">#</span>
-<span class="c1"># rc.local</span>
-<span class="c1">#</span>
-<span class="c1"># This script is executed at the end of each multiuser runlevel.</span>
-<span class="c1"># Make sure that the script will &quot;exit 0&quot; on success or any other</span>
-<span class="c1"># value on error.</span>
-<span class="c1">#</span>
-<span class="c1"># In order to enable or disable this script just change the execution</span>
-<span class="c1"># bits.</span>
-<span class="c1">#</span>
-<span class="c1"># By default this script does nothing.</span>
-
-<span class="c1"># Print the IP address</span>
-<span class="nv">_IP</span><span class="o">=</span><span class="k">$(</span>hostname -I<span class="k">)</span> <span class="o">||</span> <span class="nb">true</span>
-<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$_IP</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-  <span class="nb">printf</span> <span class="s2">&quot;My IP address is %s\n&quot;</span> <span class="s2">&quot;</span><span class="nv">$_IP</span><span class="s2">&quot;</span>
-<span class="k">fi</span>
-
-autossh -f -M <span class="m">0</span> -NR <span class="m">0</span>.0.0.0:50022:localhost:22 root@remoteserver -p <span class="m">12345</span>
-
-<span class="nb">exit</span> <span class="m">0</span>
-</code></pre></div>
-
-
-<h2>-----------------------------------------------------------------------------------------------------------------</h2>
-<h1><strong>如何让SSH保持长连接</strong></h1>
-<p>修改配置文件<strong>sshd_config</strong>，设置以下参数：</p>
-<div class="highlight"><pre><span></span><code><span class="err">ClientAliveInterval 30</span>
-<span class="err">ClientAliveCountMax 3</span>
-</code></pre></div>
-
-
-<p>ClientAliveInterval参数设置为30s，当SSH服务器在30s后没有收到客户端发送的数据，就会向客户端发送一个请求，要求客户端发送一个Keep Alive的消息。</p>
-<p>ClientAliveCountMax参数设置为3，就是当SSH服务器在90s仍然没有接收到客户端发送的Keep Alive消息，就会将SSH连接中断。</p>
-<p>默认情况下，ClientAliveInterval的参数为0，即SSH服务器不会向客户端发送请求。  </p>
-<h2>-----------------------------------------------------------------------------------------------------------------</h2>
-<h1><strong>更改树莓派的系统和软件更新源</strong></h1>
-<p><strong>修改软件更新源</strong></p>
-<p>修改配置文件/etc/apt/sources.list</p>
-<div class="highlight"><pre><span></span><code>sudo vi /etc/apt/sources.list 
-</code></pre></div>
-
-
-<p>将原来的更新源用#注释，然后添加新的更新源。</p>
-<div class="highlight"><pre><span></span><code><span class="k">deb</span> <span class="s">http://mirrors.ustc.edu.cn/raspbian/raspbian/</span> <span class="kp">stretch</span> <span class="kp">main</span> <span class="kp">contrib</span> <span class="kp">non-free</span> <span class="kp">rpi</span>
-</code></pre></div>
-
-
-<p><strong>修改系统更新源</strong></p>
-<p>修改配置文件 /etc/apt/sources.list.d/raspi.list </p>
-<div class="highlight"><pre><span></span><code>sudo vi  /etc/apt/sources.list.d/raspi.list
-</code></pre></div>
-
-
-<p>将原来的更新源用#注释，然后添加新的更新源。</p>
-<div class="highlight"><pre><span></span><code><span class="k">deb</span> <span class="s">http://mirrors.ustc.edu.cn/raspbian/raspbian/</span> <span class="kp">stretch</span> <span class="kp">main</span> <span class="kp">ui</span>
-</code></pre></div>
-
-
-<p><strong>更新源列表</strong></p>
-<p>中国科学技术大学<br>
-<a href="http://mirrors.ustc.edu.cn/raspbian/raspbian/">http://mirrors.ustc.edu.cn/raspbian/raspbian/</a></p>
-<p>阿里云<br>
-<a href="http://mirrors.aliyun.com/raspbian/raspbian/">http://mirrors.aliyun.com/raspbian/raspbian/</a></p>
-<p>清华大学<br>
-<a href="http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/">http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/</a></p>
-<p>华中科技大学<br>
-<a href="http://mirrors.hustunique.com/raspbian/raspbian/">http://mirrors.hustunique.com/raspbian/raspbian/</a> </p>
-<p>Arch Linux ARM<br>
-<a href="http://mirrors.hustunique.com/archlinuxarm/">http://mirrors.hustunique.com/archlinuxarm/</a></p>
-<p>华南农业大学（华南用户）<br>
-<a href="http://mirrors.scau.edu.cn/raspbian/">http://mirrors.scau.edu.cn/raspbian/</a></p>
-<p>大连东软信息学院源（北方用户）<br>
-<a href="http://mirrors.neusoft.edu.cn/raspbian/raspbian/">http://mirrors.neusoft.edu.cn/raspbian/raspbian/</a></p>
-<p>重庆大学源（中西部用户）<br>
-<a href="http://mirrors.cqu.edu.cn/Raspbian/raspbian/">http://mirrors.cqu.edu.cn/Raspbian/raspbian/</a></p>
-<p>新加坡国立大学<br>
-<a href="http://mirror.nus.edu.sg/raspbian/raspbian">http://mirror.nus.edu.sg/raspbian/raspbian</a></p>
-<p>牛津大学<br>
-<a href="http://mirror.ox.ac.uk/sites/archive.raspbian.org/archive/raspbian/">http://mirror.ox.ac.uk/sites/archive.raspbian.org/archive/raspbian/</a></p>
-<p>韩国KAIST大学<br>
-<a href="http://ftp.kaist.ac.kr/raspbian/raspbian/">http://ftp.kaist.ac.kr/raspbian/raspbian/</a></p>
-<h2>-----------------------------------------------------------------------------------------------------------------</h2>
-<h1><strong>Transmission下载完成后发送通知</strong></h1>
-<p>1.创建脚本文件<em>btfinish.sh</em>：</p>
-<div class="highlight"><pre><span></span><code>touch /home/pi/Documents/btfinish.sh
-chmod <span class="m">775</span> /home/pi/Documents/btfinish.sh
-</code></pre></div>
-
-
-<p>脚本内容如下：</p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-
-/home/pi/Documents/bt_ifttt.py <span class="s2">&quot;</span><span class="nv">$TR_TORRENT_NAME</span><span class="s2">&quot;</span>
-</code></pre></div>
-
-
-<p>2.创建Python脚本文件<em>bt_ifttt.py</em>，该脚本将会向IFTTT服务发送下载完成的消息。</p>
-<p>3.修改Tranmission-daemon配置文件settings.json。</p>
-<div class="highlight"><pre><span></span><code>sudo vi /etc/transmission-daemon/settings.json
-</code></pre></div>
-
-
-<p>修改以下参数：</p>
-<div class="highlight"><pre><span></span><code><span class="s2">&quot;script-torrent-done-enabled&quot;</span><span class="err">:</span> <span class="kc">true</span><span class="err">,</span> <span class="err">#</span> <span class="err">下载完成后，调用并运行脚本</span>
-<span class="s2">&quot;script-torrent-done-filename&quot;</span><span class="err">:</span> <span class="s2">&quot;/home/pi/Documents/btfinish.sh&quot;</span><span class="err">,</span> <span class="err">#</span> <span class="err">指定脚本的位置</span>
-</code></pre></div>
-
-
-<p>参考资料</p>
-<p><a href="https://github.com/transmission/transmission/wiki/Scripts">https://github.com/transmission/transmission/wiki/Scripts</a></p>
-<h2>-----------------------------------------------------------------------------------------------------------------</h2>
-<h1><strong>Transmission支持将种子文件放到指定目录下后，就会自动创建下载任务。</strong></h1>
-<p>配置文件/etc/transmission-daemon/settings.json的配置参数</p>
-<div class="highlight"><pre><span></span><code><span class="s2">&quot;watch-dir&quot;</span><span class="err">:</span> <span class="s2">&quot;/home/pi/Downloads/torrents&quot;</span><span class="err">,</span>
-<span class="s2">&quot;watch-dir-enabled&quot;</span><span class="err">:</span> <span class="kc">true</span>
-</code></pre></div>
-
-
-<p>配置参数<em>watch-dir</em>，指定存放种子文件的目录。为了避免权限不足，建议为目录设置775权限。</p>
-<div class="highlight"><pre><span></span><code>chmod <span class="m">775</span> torrents
-</code></pre></div>
-
-
-<p>为了使配置生效，需要重新启动Transmission-daemon服务。</p>
-<div class="highlight"><pre><span></span><code>sudo service transmission-daemon restart
-</code></pre></div>
-
-
-<h2>-----------------------------------------------------------------------------------------------------------------</h2>
-<h1><strong>树莓派如何启用VNC服务</strong></h1>
-<p>输入命令<strong>sudo raspi-config</strong>，选择<strong>Interface Options</strong>  - <strong>P3 VNC</strong>。</p>
-<p>默认情况下，树莓派的分辨率为<strong>720x480</strong>，因此，VNC连上后，无法正常显示桌面。</p>
-<p>输入命令<strong>sudo raspi-config</strong>，选择<strong>Advanced Options</strong> - <strong>Resolution</strong>，将分辨率调整为<strong>1920x1080</strong>。</p>
-<h2>-----------------------------------------------------------------------------------------------------------------</h2>
-<h1><strong>树莓派没有显示器如何配置随机启动SSH服务 </strong></h1>
-<p>将SD卡插到电脑上，打开boot分区，用记事本创建一个新文件，文件名为ssh，<strong>注意需要将后缀.txt删除</strong>。然后将SD卡插入树莓派，通电启动后，SSH服务会随机启动。</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p><strong>autossh -f -M …</strong></p>
+                <a class="readmore" href="/ji-zhu-xiao-tie-shi.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
