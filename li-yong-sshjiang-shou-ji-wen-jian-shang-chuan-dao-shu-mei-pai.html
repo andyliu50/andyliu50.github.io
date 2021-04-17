@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>利用SSH将手机文件上传到树莓派</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <meta name="description" content="在iPhone手机上，可以使用快捷指令中的SSH指令，将文件上传到树莓派。 首先，利用“制作归档”指令，将文件压缩成.tar.gz的压缩文件。 然后，利用“通过SSH运行脚本”指令，将压缩文件上传到树莓派，并且解压缩文件。 例如以下命令，就是将文件上传并解压缩到树莓派的/home/pi目录：..." />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Andy's Blog</a></h1>
+                <nav><ul>
+                    <li><a href="/index.html">首页</a></li>
+                    <li class="active"><a href="/category/ji-zhu.html">技术</a></li>
+                    <li><a href="/category/pao-bu.html">跑步</a></li>
+                    <li><a href="/category/sui-xiang.html">随想</a></li>
+                    <li><a href="/category/yue-du.html">阅读</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/li-yong-sshjiang-shou-ji-wen-jian-shang-chuan-dao-shu-mei-pai.html" rel="bookmark"
+           title="Permalink to 利用SSH将手机文件上传到树莓派">利用SSH将手机文件上传到树莓派</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2021-04-17T16:30:00+08:00">
+                Published: 周六 17 四月 2021
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andy.html">Andy</a>
+        </address>
+<p>In <a href="/category/ji-zhu.html">技术</a>.</p>
+
+</footer><!-- /.post-info -->      <p>在iPhone手机上，可以使用快捷指令中的SSH指令，将文件上传到树莓派。</p>
+<p>首先，利用<strong>“制作归档”</strong>指令，将文件压缩成.tar.gz的压缩文件。</p>
+<p>然后，利用<strong>“通过SSH运行脚本”</strong>指令，将压缩文件上传到树莓派，并且解压缩文件。</p>
+<p>例如以下命令，就是将文件上传并解压缩到树莓派的<strong>/home/pi</strong>目录：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> /home/pi <span class="o">&amp;&amp;</span> tar xzvf - &gt; /dev/null
+</code></pre></div>
+
+
+<p><img alt="" src="/images/利用SSH将手机文件上传到树莓派/1.jpeg"></p>
+<p>此外，还可以查看命令执行后的返回结果，如果是0，说明命令执行成功，否则，就是上传失败。
+以下命令可以用于查看上一条命令的执行结果。</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="nv">$?</span>
+</code></pre></div>
+
+
+<p><img alt="" src="/images/利用SSH将手机文件上传到树莓派/2.jpeg"></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
