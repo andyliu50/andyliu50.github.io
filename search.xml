@@ -148,6 +148,7 @@
 <h2 id="Mac如何安装根证书"><a href="#Mac如何安装根证书" class="headerlink" title="Mac如何安装根证书"></a>Mac如何安装根证书</h2><p>打开终端工具，输入以下命令：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">CERT=&quot;/path/to/my/cert/my-root.crt&quot;</span><br><span class="line">sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain $CERT</span><br></pre></td></tr></table></figure>
 
+<p><img src="/2021/10/19/home-assistant/home-assistant-https/homeassistant_ios.png"></p>
 ]]></content>
       <categories>
         <category>Home_Assistant</category>
