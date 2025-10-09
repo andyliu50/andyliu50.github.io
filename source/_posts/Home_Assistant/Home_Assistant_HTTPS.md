@@ -208,3 +208,4 @@ CERT="/path/to/my/cert/my-root.crt"
 sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain $CERT
 ```
 
+![](homeassistant_ios.png)
